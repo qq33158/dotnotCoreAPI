@@ -25,10 +25,17 @@ namespace Api.Controllers
             if(!ModelState.IsValid){
                 return BadRequest(ModelState);
             }
-            await _context.AddAsync(student);
-            var result = await _context.SaveChangesAsync();
-            if(result > 0){
-                return Ok();
+
+            var existStudent = await _context.Students.FindAsync(student.Id);
+
+            if (existStudent == null){
+                await _context.AddAsync(student);
+                var result = await _context.SaveChangesAsync();
+                if (result > 0){
+                    return Ok();
+                }
+            }else{
+                return BadRequest("ID already exists");
             }
             return BadRequest();
         }
