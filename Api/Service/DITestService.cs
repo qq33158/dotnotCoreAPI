@@ -3,24 +3,25 @@
     public class DITestService
     {
         private readonly TransientService _transientService;
-        private readonly SingletonService _singletonService;
         private readonly ScopedService _scopedService;
+        private readonly SingletonService _singletonService;       
         // 注入DI
         public DITestService(
             TransientService transientService,
-            SingletonService singletonService,
-            ScopedService scopedService)
+            ScopedService scopedService,
+            SingletonService singletonService
+            )
         {
             _transientService = transientService;
-            _singletonService = singletonService;
             _scopedService = scopedService;
+            _singletonService = singletonService;          
         }
 
         public void RunDITest()
         {
             _transientService.CountAddOne();
-            _singletonService.CountAddOne();
             _scopedService.CountAddOne();
+            _singletonService.CountAddOne();         
         }
     }
 }
