@@ -47,6 +47,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseRouting();
+app.UseStaticFiles(); // ¥´¶}ÀRºA¥Ø¿ý
 
 app.Run();
