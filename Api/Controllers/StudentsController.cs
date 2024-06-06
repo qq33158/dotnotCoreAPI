@@ -82,8 +82,9 @@ namespace Api.Controllers
         // FromForm無法直接解析Json字串(value)至對應的類別物件，可以透過JsonSerializer.Deserialize解析
         // 為了不每個程式都寫JsonSerializer.Deserialize，將解析方法寫在FormDataJsonBinder裡面
         // FormBody可以直接解析Json字串(value)至對應的類別物件
+        // 需用Postman測試
         [HttpPost("FormDataJsonBinder")]
-        public void PostFormDataJsonBinder([FromForm][ModelBinder(BinderType =typeof(FormDataJsonBinder))] Student value) { 
+        public void PostFormDataJsonBinder([FromForm][ModelBinder(BinderType =typeof(FormDataJsonBinder))] Student student) { 
         
             
 
